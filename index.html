@@ -7,99 +7,106 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,'Segoe UI',sans-serif;background:#f4f6fb;color:#1a1a2e;min-height:100vh;padding:2rem 1rem}
-.container{max-width:820px;margin:0 auto}
+.container{max-width:900px;margin:0 auto}
 
-.header{display:flex;align-items:center;gap:12px;margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:2px solid #dde3f5}
-.header-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#1e3a8a,#3730a3);display:flex;align-items:center;justify-content:center;font-size:22px}
-.header h1{font-size:26px;font-weight:700;color:#1a1a2e;letter-spacing:-.03em}
-.header-sub{font-size:15px;color:#9ca3af;margin-top:2px}
+.header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:2px solid #dde3f5}
+.header-icon{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,#1e3a8a,#3730a3);display:flex;align-items:center;justify-content:center;font-size:20px}
+.header h1{font-size:24px;font-weight:700;color:#1a1a2e;letter-spacing:-.03em}
+.header-sub{font-size:13px;color:#9ca3af;margin-top:2px}
 .live-wrap{margin-left:auto;display:flex;align-items:center;gap:5px}
-.live-dot{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 7px #22c55e}
-.live-label{font-size:13px;color:#22c55e;font-weight:700}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 7px #22c55e}
+.live-label{font-size:12px;color:#22c55e;font-weight:700}
 
-.card{background:#fff;border-radius:14px;padding:1.6rem 1.8rem;margin-bottom:.9rem;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.card{background:#fff;border-radius:14px;padding:1.1rem 1.4rem;margin-bottom:.75rem;box-shadow:0 1px 4px rgba(0,0,0,.05)}
 .card-blue{border:2px solid #1d4ed8}
 .card-dark{border:2px solid #374151}
 
-.section-label{font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:8px}
-.section-label .bar{width:4px;height:17px;border-radius:2px;flex-shrink:0}
+.section-label{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:8px}
+.section-label .bar{width:4px;height:15px;border-radius:2px;flex-shrink:0}
 .sl-blue .bar{background:#1e3a8a}
 .sl-blue{color:#1e3a8a}
 .sl-dark .bar{background:#111827}
 .sl-dark{color:#111827}
 
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:1fr 1fr}
-.g3{grid-template-columns:1fr 1fr 1fr}
-.g4{grid-template-columns:1fr 1fr 1fr 1fr}
+/* 일렬 배치 */
+.row{display:flex;align-items:flex-end;gap:10px;flex-wrap:nowrap}
+.row-wrap{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
 
-.field{display:flex;flex-direction:column;gap:7px}
-label{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
 .card-blue .field label{color:#1e3a8a}
 .card-dark .field label{color:#374151}
 
+/* 기본 입력창 크기 (종목&거래용) */
 input,select{
-  height:48px;padding:0 14px;
-  border-radius:10px;
-  font-size:17px;color:#1a1a2e;background:#fff;
-  width:100%;outline:none;
+  height:46px;padding:0 12px;
+  border-radius:9px;
+  font-size:16px;color:#1a1a2e;background:#fff;
+  outline:none;
   transition:border-color .15s,box-shadow .15s;
   appearance:none;-webkit-appearance:none;
+  width:100%;
 }
 select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;padding-right:34px
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;padding-right:28px
 }
 input::placeholder{color:#d1d5db}
 
+/* 작은 입력창 (날짜&시장, 매수분석용) */
+.sm input,.sm select{height:34px;font-size:13px;padding:0 9px}
+.sm select{padding-right:24px}
+
 .card-blue input,.card-blue select{border:2px solid #1d4ed8;background:#fff}
 .card-blue input:focus,.card-blue select:focus{border-color:#1e3a8a;box-shadow:0 0 0 3px rgba(30,58,138,.12)}
-
 .card-dark input,.card-dark select{border:2px solid #374151;background:#fff}
 .card-dark input:focus,.card-dark select:focus{border-color:#111827;box-shadow:0 0 0 3px rgba(17,24,39,.1)}
+.card-dark select:disabled{border-color:#d1d5db;color:#d1d5db;cursor:not-allowed}
+.card-dark .field label.dim{color:#d1d5db}
 
-/* 비활성화된 드롭박스 */
-.card-dark select:disabled{
-  border-color:#d1d5db;color:#d1d5db;cursor:not-allowed;
-  background:#fff;opacity:1
-}
-.card-dark .field label.disabled-label{color:#d1d5db}
+/* 고정 너비 필드 */
+.w-year{width:100px}
+.w-month{width:80px}
+.w-day{width:70px}
+.w-market{width:130px}
+.w-action{width:160px}
+.w-ticker{width:180px}
+.w-price{width:140px}
+.w-qty{width:110px}
+
+/* 매수분석 소형 */
+.w-sm{width:90px}
 
 .price-wrap{position:relative;display:flex;align-items:center}
-.price-wrap input{padding-right:56px}
-.currency-tag{position:absolute;right:13px;font-size:13px;font-weight:700;color:#1e3a8a;pointer-events:none}
+.price-wrap input{padding-right:46px}
+.currency-tag{position:absolute;right:10px;font-size:11px;font-weight:700;color:#1e3a8a;pointer-events:none}
 
-.action-toggle{display:grid;grid-template-columns:1fr 1fr;border:2px solid #1d4ed8;border-radius:10px;overflow:hidden;height:48px}
-.action-toggle button{border:none;background:#fff;font-size:17px;font-weight:700;cursor:pointer;transition:all .15s}
+/* 매수/매도 토글 */
+.action-toggle{display:grid;grid-template-columns:1fr 1fr;border:2px solid #1d4ed8;border-radius:9px;overflow:hidden;height:46px;width:160px}
+.action-toggle button{border:none;background:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s}
 .action-toggle button.buy.active{background:#dcfce7;color:#15803d}
 .action-toggle button.sell.active{background:#fee2e2;color:#dc2626}
 .action-toggle button:not(.active):hover{background:#f0f9ff}
 
-.badge{font-size:12px;font-weight:700;padding:3px 9px;border-radius:5px;margin-left:6px;background:#f9fafb;color:#374151;border:2px solid #374151}
+.badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;margin-left:6px;background:#f9fafb;color:#374151;border:1.5px solid #374151}
 
-.divider{height:1px;background:#dbeafe;margin:1rem 0}
-.divider-dark{height:1px;background:#e5e7eb;margin:1rem 0}
+.divider{height:1px;background:#e8edf5;margin:.75rem 0}
 
-.btn-row{display:flex;gap:10px;margin-top:1.1rem;align-items:center;flex-wrap:wrap}
-.btn{height:50px;padding:0 26px;border-radius:11px;font-size:17px;font-weight:700;cursor:pointer;border:none;transition:all .15s}
+.btn-row{display:flex;gap:9px;margin-top:.9rem;align-items:center;flex-wrap:wrap}
+.btn{height:46px;padding:0 24px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;border:none;transition:all .15s}
 .btn-save{background:linear-gradient(135deg,#1e3a8a,#3730a3);color:#fff;box-shadow:0 2px 10px rgba(30,58,138,.28)}
 .btn-save:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(30,58,138,.35)}
-.btn-reset{background:#f1f5f9;color:#64748b;border:2px solid #e2e8f0;font-size:16px}
+.btn-reset{background:#f1f5f9;color:#64748b;border:1.5px solid #e2e8f0;font-size:15px}
 .btn-reset:hover{background:#e8edf5}
-.btn-export{background:#fff;color:#374151;border:2px solid #374151;font-size:16px}
+.btn-export{background:#fff;color:#374151;border:1.5px solid #374151;font-size:15px}
 .btn-export:hover{background:#f9fafb}
-.rec-count{font-size:14px;color:#9ca3af;margin-left:auto}
+.rec-count{font-size:13px;color:#9ca3af;margin-left:auto}
 
-.toast{display:none;position:fixed;bottom:28px;left:50%;transform:translateX(-50%);padding:12px 24px;border-radius:12px;font-size:15px;font-weight:600;z-index:99;white-space:nowrap;border:2px solid;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.toast{display:none;position:fixed;bottom:28px;left:50%;transform:translateX(-50%);padding:11px 22px;border-radius:11px;font-size:14px;font-weight:600;z-index:99;white-space:nowrap;border:1.5px solid;box-shadow:0 4px 16px rgba(0,0,0,.1)}
 .toast.show{display:block}
 .toast.success{background:#f0fdf4;color:#15803d;border-color:#86efac}
 .toast.error{background:#fef2f2;color:#dc2626;border-color:#fca5a5}
-.toast.info{background:#eff6ff;color:#1e3a8a;border-color:#1d4ed8}
-
-@media(max-width:560px){
-  .g3{grid-template-columns:1fr 1fr}
-  .g4{grid-template-columns:1fr 1fr}
-}
+.toast.info{background:#eff6ff;color:#1e3a8a;border-color:#93c5fd}
 </style>
 </head>
 <body>
@@ -117,12 +124,12 @@ input::placeholder{color:#d1d5db}
     </div>
   </div>
 
-  <!-- 날짜 & 시장 -->
+  <!-- 날짜 & 시장 (일렬 + 소형) -->
   <div class="card card-blue">
     <div class="section-label sl-blue"><div class="bar"></div>날짜 &amp; 시장</div>
-    <div class="grid g3">
-      <div class="field"><label>연도</label><select id="year"></select></div>
-      <div class="field"><label>월</label>
+    <div class="row sm">
+      <div class="field w-year"><label>연도</label><select id="year"></select></div>
+      <div class="field w-month"><label>월</label>
         <select id="month">
           <option value="01">01월</option><option value="02">02월</option><option value="03">03월</option>
           <option value="04">04월</option><option value="05">05월</option><option value="06">06월</option>
@@ -130,68 +137,58 @@ input::placeholder{color:#d1d5db}
           <option value="10">10월</option><option value="11">11월</option><option value="12">12월</option>
         </select>
       </div>
-      <div class="field"><label>일</label><select id="day"></select></div>
-    </div>
-    <div class="divider"></div>
-    <div class="grid g2">
-      <div class="field">
-        <label>미국 / 한국</label>
+      <div class="field w-day"><label>일</label><select id="day"></select></div>
+      <div style="width:1px;height:34px;background:#dde3f5;margin:0 4px;align-self:flex-end"></div>
+      <div class="field w-market"><label>미국 / 한국</label>
         <select id="market_type" onchange="updateCurrency()">
-          <option value="US">🇺🇸 미국 (USD)</option>
-          <option value="KR">🇰🇷 한국 (KRW)</option>
+          <option value="US">🇺🇸 미국 USD</option>
+          <option value="KR">🇰🇷 한국 KRW</option>
         </select>
       </div>
-      <div class="field">
-        <label>매수 / 매도</label>
-        <div class="action-toggle">
-          <button class="buy active" onclick="setAction('BUY')">▲ 매수</button>
-          <button class="sell" onclick="setAction('SELL')">▼ 매도</button>
+      <div class="field"><label>매수 / 매도</label>
+        <div class="action-toggle" style="height:34px;width:140px">
+          <button class="buy active" onclick="setAction('BUY')" style="font-size:13px">▲ 매수</button>
+          <button class="sell" onclick="setAction('SELL')" style="font-size:13px">▼ 매도</button>
         </div>
         <input type="hidden" id="action" value="BUY">
       </div>
     </div>
   </div>
 
-  <!-- 종목 & 거래 -->
+  <!-- 종목 & 거래 (일렬 + 기본 크기) -->
   <div class="card card-blue">
     <div class="section-label sl-blue"><div class="bar"></div>종목 &amp; 거래</div>
-    <div class="grid" style="grid-template-columns:2fr 1fr 1fr">
-      <div class="field">
-        <label>종목명 / Ticker</label>
-        <input type="text" id="ticker" maxlength="20" placeholder="NVDA · 000660" style="text-transform:uppercase;letter-spacing:.04em">
+    <div class="row">
+      <div class="field w-ticker"><label>종목명 / Ticker</label>
+        <input type="text" id="ticker" maxlength="20" placeholder="NVDA · 000660" style="text-transform:uppercase;letter-spacing:.03em">
       </div>
-      <div class="field">
-        <label>가격</label>
+      <div class="field w-price"><label>가격</label>
         <div class="price-wrap">
           <input type="number" id="price" min="0" step="any" placeholder="0">
           <span class="currency-tag" id="currency-tag">USD</span>
         </div>
       </div>
-      <div class="field">
-        <label>수량</label>
+      <div class="field w-qty"><label>수량</label>
         <input type="number" id="qty" min="0" step="1" placeholder="0">
       </div>
     </div>
   </div>
 
-  <!-- 매수 분석 -->
+  <!-- 매수 분석 (일렬 + 소형) -->
   <div class="card card-dark">
     <div class="section-label sl-dark">
       <div class="bar"></div>매수 분석
       <span class="badge">매수 선택 시 활성화</span>
     </div>
-    <div class="grid g4">
-      <div class="field"><label id="lbl_market">Market</label><select id="f_market" disabled><option value="">-</option><option>UP</option><option>NT</option><option>DW</option></select></div>
-      <div class="field"><label id="lbl_pv">PV</label><select id="f_pv" disabled><option value="">-</option><option>High</option><option>Low</option></select></div>
-      <div class="field"><label id="lbl_c">C</label><select id="f_c" disabled><option value="">-</option><option>News</option><option>Earning</option><option>Theme</option><option>Sector</option></select></div>
-      <div class="field"><label id="lbl_hl">HL</label><select id="f_hl" disabled><option value="">-</option><option>Y</option><option>N</option></select></div>
-    </div>
-    <div class="divider-dark"></div>
-    <div class="grid g4">
-      <div class="field"><label id="lbl_rs">RS</label><select id="f_rs" disabled><option value="">-</option><option>High</option><option>Middle</option><option>Low</option></select></div>
-      <div class="field"><label id="lbl_ath">ATH</label><select id="f_ath" disabled><option value="">-</option><option>UP5</option><option>UP10</option><option>DW5</option><option>DW10</option></select></div>
-      <div class="field"><label id="lbl_pattern">Pattern</label><select id="f_pattern" disabled><option value="">-</option><option>CWH</option><option>FW</option></select></div>
-      <div class="field"><label id="lbl_setup">Setup</label><select id="f_setup" disabled><option value="">-</option><option>BO</option><option>PB</option></select></div>
+    <div class="row-wrap sm">
+      <div class="field w-sm"><label id="lbl_market">Market</label><select id="f_market" disabled><option value="">-</option><option>UP</option><option>NT</option><option>DW</option></select></div>
+      <div class="field w-sm"><label id="lbl_pv">PV</label><select id="f_pv" disabled><option value="">-</option><option>High</option><option>Low</option></select></div>
+      <div class="field" style="width:110px"><label id="lbl_c">C</label><select id="f_c" disabled><option value="">-</option><option>News</option><option>Earning</option><option>Theme</option><option>Sector</option></select></div>
+      <div class="field w-sm"><label id="lbl_hl">HL</label><select id="f_hl" disabled><option value="">-</option><option>Y</option><option>N</option></select></div>
+      <div class="field w-sm"><label id="lbl_rs">RS</label><select id="f_rs" disabled><option value="">-</option><option>High</option><option>Middle</option><option>Low</option></select></div>
+      <div class="field w-sm"><label id="lbl_ath">ATH</label><select id="f_ath" disabled><option value="">-</option><option>UP5</option><option>UP10</option><option>DW5</option><option>DW10</option></select></div>
+      <div class="field w-sm"><label id="lbl_pattern">Pattern</label><select id="f_pattern" disabled><option value="">-</option><option>CWH</option><option>FW</option></select></div>
+      <div class="field w-sm"><label id="lbl_setup">Setup</label><select id="f_setup" disabled><option value="">-</option><option>BO</option><option>PB</option></select></div>
     </div>
   </div>
 
@@ -244,8 +241,8 @@ function updateCurrency() {
     document.getElementById('market_type').value === 'US' ? 'USD' : 'KRW';
 }
 
-const BUY_FIELDS = ['f_market','f_pv','f_c','f_hl','f_rs','f_ath','f_pattern','f_setup'];
-const BUY_LABELS = ['lbl_market','lbl_pv','lbl_c','lbl_hl','lbl_rs','lbl_ath','lbl_pattern','lbl_setup'];
+const BUY_FIELDS  = ['f_market','f_pv','f_c','f_hl','f_rs','f_ath','f_pattern','f_setup'];
+const BUY_LABELS  = ['lbl_market','lbl_pv','lbl_c','lbl_hl','lbl_rs','lbl_ath','lbl_pattern','lbl_setup'];
 
 let currentAction = 'BUY';
 function setAction(a) {
@@ -253,7 +250,6 @@ function setAction(a) {
   const isBuy = a === 'BUY';
   document.querySelector('.action-toggle .buy').classList.toggle('active', isBuy);
   document.querySelector('.action-toggle .sell').classList.toggle('active', !isBuy);
-
   BUY_FIELDS.forEach(id => {
     const el = document.getElementById(id);
     el.disabled = !isBuy;
@@ -263,8 +259,6 @@ function setAction(a) {
     document.getElementById(id).style.color = isBuy ? '' : '#d1d5db';
   });
 }
-
-// 초기 상태: 매수 선택이므로 활성화
 setAction('BUY');
 
 function showToast(msg, type) {
